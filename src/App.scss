@@ -1,0 +1,93 @@
+.App {
+  background-color: darkgrey;
+  min-height: 100vh;
+}
+
+.App-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: black;
+  color: white;
+  padding: 1rem;
+}
+
+.App-logo {
+  height: 3rem;
+  width: auto;
+}
+
+/* Movies Homepage */
+
+.movies-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 1rem;
+}
+
+.hero-container {
+  z-index: 1;
+  position: relative;
+
+  .caption {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    margin: 3rem auto;
+    padding: 0 4rem;
+  }
+
+  h2 {
+    text-transform: uppercase;
+    background-color: black;
+    color: white;
+    padding: 1rem 4rem;
+  }
+  
+  img {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.film {
+  background-color: black;
+  color: white;
+  border: 0.2rem solid black;
+  border-radius: 1rem;
+  padding: 1rem;
+  h4 {
+    color: rgb(133, 133, 133);
+  }
+}
+
+/* Elements */
+
+// Call to Action buttons 
+
+.cta {
+  width: fit-content;
+  color: white;
+  text-decoration: none;
+
+  &-watch-trailer {
+    padding: 1rem;
+    border-radius: 3rem;
+    border: 3px solid white;
+    
+    background-color: rgb(9, 32, 75);
+
+  }
+}
+
+@media screen and (min-width: 820px) {
+  .movies-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
