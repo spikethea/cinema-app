@@ -1,8 +1,8 @@
 import {useEffect, useState, Suspense, useRef} from 'react';
 import { MovieData } from './types';
 import logo from './logo.svg';
-import placeholderImage from './assets/images/placeholder.png';
 import './App.scss';
+import Hero from './components/Hero/Hero';
 
 const KEY_ID = '73cadb65ff374fcf789e84b35293b73b';
 
@@ -19,17 +19,14 @@ function getMovies(): Promise<MovieData[]> {
 function App() {
 
   const title: String = "MyCinema App";
-  const imgRef = useRef(null);
 
   const [filmList, setFilmList] = useState<MovieData[]>([]);
-  const [heroImage, setHeroImage] = useState(placeholderImage);
 
   useEffect(()=> {
     getMovies()
       .then(movies => {
         console.log(movies);
         setFilmList(movies);
-        setHeroImage(`https://image.tmdb.org/t/p/original/${movies[0].backdrop_path}`);
       });
     
   }, []);
@@ -43,17 +40,7 @@ function App() {
             <li><a href=""></a></li>
           </ul>
       </header>
-      <section className='hero-container'>
-          <img 
-            src={heroImage}
-            ref={imgRef}
-            alt=""
-          />
-        <div className='caption'>
-          <h2>Movie Highlight</h2>
-          <a className='cta cta-watch-trailer' href="">watch trailer</a>
-        </div>
-      </section>
+      <Hero film={filmList[0]}/>
       <section className='movies-container'>
         {filmList ? filmList.map( movie => {
           return (
