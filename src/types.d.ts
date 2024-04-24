@@ -3,5 +3,6 @@ export interface MovieData {
     release_date: string,
     image: string,
     id: number;
-    backdrop_path: string
+    backdrop_path: string;
+    poster_path: string;
 }

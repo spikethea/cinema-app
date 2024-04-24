@@ -24,7 +24,7 @@ const Hero = ({ film }: HeroProps) => {
             alt=""
           />
         <div className='caption'>
-          <h2>Movie Highlight</h2>
+          <h2>{film ? film.title : 'Highlight Movie'}</h2>
           <a className='cta cta-watch-trailer' href="">watch trailer</a>
         </div>
       </section>
