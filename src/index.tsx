@@ -7,12 +7,17 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
+import Film from 'routes/Film/Film';
 
 const router = createBrowserRouter([
   {
   path:"/",
   element: <Root/>
-  }
+  },
+  {
+    path:"/preview",
+    element: <Film/>
+  },
 ])
 
 const root = ReactDOM.createRoot(

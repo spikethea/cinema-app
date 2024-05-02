@@ -1,0 +1,32 @@
+.film-preview {
+  &_page {
+    background: black;
+    color: white;
+
+    main {
+      
+    }
+  }
+
+  &_hero-container {
+    display: flex;
+    
+  }
+
+  &_showtimes {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1rem;
+    button {
+      background-color: yellow;
+      color: black;
+      padding: 1rem 4rem;
+    }
+  }
+}
+
+/* Elements */
+
+// Call to Action buttons 
+
