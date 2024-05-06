@@ -19,10 +19,18 @@
     gap: 1rem;
     margin: 1rem;
     button {
-      background-color: yellow;
+      background-color: orange;
       color: black;
       padding: 1rem 4rem;
+
+      &:active {
+        background-color: orangered;
+      }
     }
+  }
+
+  &_perspective {
+    height: 100vh;
   }
 }
 

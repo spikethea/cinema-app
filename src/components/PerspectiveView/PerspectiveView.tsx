@@ -1,28 +1,31 @@
 import React, { Suspense } from 'react';
-import { useLoader } from '@react-three/fiber';
+import { Canvas, useLoader } from '@react-three/fiber';
+import {OrbitControls} from '@react-three/drei';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import scene from 'assets/models/movietheatre.glb'
+import placeholder from 'assets/images/placeholder.png'
 
 function Scene(props: any) {
     const gltf = useLoader(GLTFLoader, scene);
 
-    console.log(gltf);
-
     return (
         <group {...props}>
-            <scene>
+            <Canvas>
+                <ambientLight intensity={Math.PI / 2} />
+                <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
+                <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
                 <mesh castShadow receiveShadow>
-                    <bufferGeometry attach="geometry" {...gltf.scene} />
-                    <meshPhongMaterial attach="material" color="black" />
+                    <primitive object={gltf.scene} /> 
                 </mesh>
-            </scene>
+                <OrbitControls enablePan={false} enableZoom={false}/>
+            </Canvas>
         </group>
     )
 }
 
 export default function SuspendedScene() {
     return (
-        <Suspense fallback={null}>
+        <Suspense fallback={placeholder}>
             <Scene />
         </Suspense>
     )

@@ -49,7 +49,9 @@ function App() {
             <button>11:00PM</button>
           </div>
         </div>
-        <PerspectiveView/>
+        <div className='film-preview_perspective'>
+          <PerspectiveView/>
+        </div>
         <section className='movies-container'>
           <h3>Title</h3>
           <h5>Description</h5>
