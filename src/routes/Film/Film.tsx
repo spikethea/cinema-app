@@ -1,10 +1,12 @@
 import {useEffect, useState, Suspense, useRef} from 'react';
+import { UseDispatch, useDispatch, useSelector } from 'react-redux';
 import { MovieData } from 'types';
-import logo from './logo.svg';
 import './Film.scss';
 import Hero from 'components/Hero/Hero';
 import MovieThumbnail from 'components/MovieThumbnail/MovieThumbnail';
 import PerspectiveView from 'components/PerspectiveView/PerspectiveView';
+
+import {filmSlice} from 'features/films/filmSlice'
 
 const KEY_ID = '73cadb65ff374fcf789e84b35293b73b';
 
@@ -21,6 +23,8 @@ function getMovies(): Promise<MovieData[]> {
 function App() {
 
   const title: String = "MyCinema App";
+  const films = useSelector(filmSlice);
+  const dispatch = useDispatch();
 
   const [film, setFilm] = useState<MovieData>();
 
@@ -35,7 +39,6 @@ function App() {
 
   return (
     <div className="film-preview_page">
-      
       <main>
         <aside>
           <h3>Filter</h3>
