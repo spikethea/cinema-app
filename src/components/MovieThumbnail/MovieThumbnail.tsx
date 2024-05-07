@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { MovieData } from '../../types';
 import placeholder from '../../assets/images/placeholder.png';
+import { Link } from 'react-router-dom';
 const TMDBURL = "https://image.tmdb.org/t/p/original";
 
 function getPosterImage(MovieID: number): Promise<any> {
@@ -28,12 +29,12 @@ function MovieThumbnail ( data: MovieData ) {
     }, [])
 
     return (
-        <div className={'movie-thumbnail'} id={'movie-thumbnail_' + data.id} key={data.id} >
+        <Link to={'preview'} className={'movie-thumbnail'} id={'movie-thumbnail_' + data.id} key={data.id} >
             <img src={TMDBURL + data.poster_path}/>
             <h5>{data.title}</h5>
             <h4>{data.release_date}</h4>
             <p></p>
-          </div>
+          </Link>
     )
 }
 

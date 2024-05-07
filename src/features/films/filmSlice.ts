@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-
+// https://react-redux.js.org/tutorials/quick-start
 export const filmSlice = createSlice({
     name: 'film',
     initialState: {
@@ -17,5 +17,7 @@ export const filmSlice = createSlice({
         },
     },
 });
+
+export const { increment, decrement, incrementByAmount } = filmSlice.actions
 
 export default filmSlice.reducer;

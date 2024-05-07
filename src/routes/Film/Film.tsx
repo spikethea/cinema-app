@@ -6,7 +6,8 @@ import Hero from 'components/Hero/Hero';
 import MovieThumbnail from 'components/MovieThumbnail/MovieThumbnail';
 import PerspectiveView from 'components/PerspectiveView/PerspectiveView';
 
-import {filmSlice} from 'features/films/filmSlice'
+import filmSlice from 'features/films/filmSlice'
+import { IRootState } from 'store';
 
 const KEY_ID = '73cadb65ff374fcf789e84b35293b73b';
 
@@ -23,7 +24,7 @@ function getMovies(): Promise<MovieData[]> {
 function App() {
 
   const title: String = "MyCinema App";
-  const films = useSelector(filmSlice);
+  const films = useSelector((state: IRootState) => state.film.value);
   const dispatch = useDispatch();
 
   const [film, setFilm] = useState<MovieData>();
@@ -56,7 +57,7 @@ function App() {
           <PerspectiveView/>
         </div>
         <section className='movies-container'>
-          <h3>Title</h3>
+          <h3>{films}</h3>
           <h5>Description</h5>
         </section>
       </main>
