@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Root from './Root';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -10,11 +9,12 @@ import store from './store';
 import reportWebVitals from './reportWebVitals';
 import Film from 'routes/Film/Film';
 import { Provider } from 'react-redux';
+import Home from 'routes/Home/Home';
 
 const router = createBrowserRouter([
   {
   path:"/",
-  element: <Root/>
+  element: <Home/>
   },
   {
     path:"/preview",

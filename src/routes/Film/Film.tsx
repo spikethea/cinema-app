@@ -24,8 +24,6 @@ function getMovies(): Promise<MovieData[]> {
 function App() {
 
   const title: String = "MyCinema App";
-  const films = useSelector((state: IRootState) => state.film.value);
-  const dispatch = useDispatch();
 
   const [film, setFilm] = useState<MovieData>();
 
@@ -57,7 +55,7 @@ function App() {
           <PerspectiveView/>
         </div>
         <section className='movies-container'>
-          <h3>{films}</h3>
+          <h3></h3>
           <h5>Description</h5>
         </section>
       </main>

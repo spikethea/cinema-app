@@ -1,36 +1,24 @@
-import {useEffect, useState, Suspense, useRef} from 'react';
-import { MovieData } from 'types';
-import logo from './logo.svg';
-import './App.scss';
+import {useEffect, useState } from 'react';
+import { useGetAllRecentMoviesQuery } from 'services/movies';
 import Hero from 'components/Hero/Hero';
 import MovieThumbnail from 'components/MovieThumbnail/MovieThumbnail';
+import { MovieData } from 'types';
+import './Home.scss';
 
-const KEY_ID = '73cadb65ff374fcf789e84b35293b73b';
-
-
-function getMovies(): Promise<MovieData[]> {
-  return fetch(`
-  https://api.themoviedb.org/3/movie/popular?api_key=${KEY_ID}&language=en-US&page=1`)
-    .then(res => res.json())
-    .then(res => {
-      return res.results as MovieData[]
-    })
-}
 
 function App() {
 
   const title: String = "MyCinema App";
 
+  const { data, error, isLoading } = useGetAllRecentMoviesQuery();
+
   const [filmList, setFilmList] = useState<MovieData[]>([]);
 
   useEffect(()=> {
-    getMovies()
-      .then(movies => {
-        console.log(movies);
-        setFilmList(movies);
-      });
-    
-  }, []);
+    console.log(data);
+    if (data?.results) 
+      setFilmList(data.results)
+  }, [data]);
 
   return (
     <div className="landing-page">
@@ -51,3 +39,5 @@ function App() {
 }
 
 export default App;
+
+
