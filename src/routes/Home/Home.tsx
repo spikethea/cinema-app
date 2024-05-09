@@ -28,9 +28,9 @@ function App() {
           <h3>Filter</h3>
         </aside>
         <section className='movies-container'>
-          {filmList ? filmList.map( props => {
+          {filmList ? filmList.map( (props, id) => {
             return (
-            <MovieThumbnail {...props}/>)
+            <MovieThumbnail key={id} {...props}/>)
           }): null}
         </section>
       </main>
