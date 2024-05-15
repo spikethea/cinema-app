@@ -24,7 +24,78 @@
                     "seatPos": 2,
                     "isPremium": false,
                     "isEmpty": false
+                },
+                {
+                    "id": 2,
+                    "seatId": 2,
+                    "seatPos": 2,
+                    "isPremium": false,
+                    "isEmpty": false
+                },
+                {
+                    "id": 3,
+                    "seatId": 3,
+                    "seatPos": 3,
+                    "isPremium": false,
+                    "isEmpty": false
+                },
+                {
+                    "id": 4,
+                    "seatId": 4,
+                    "seatPos": 4,
+                    "isPremium": false,
+                    "isEmpty": false
                 }
+
+            ]
+        },
+        {
+            "name": "A",
+            "elevation": 1,
+            "seats":[
+                {
+                    "id": 0,
+                    "seatId": 0,
+                    "seatPos": 0,
+                    "isPremium": false,
+                    "isEmpty": false
+                },
+                {
+                    "id": 1,
+                    "seatId": 1,
+                    "seatPos": 1,
+                    "isPremium": false,
+                    "isEmpty": false
+                },
+                {
+                    "id": 2,
+                    "seatId": 2,
+                    "seatPos": 2,
+                    "isPremium": false,
+                    "isEmpty": false
+                },
+                {
+                    "id": 2,
+                    "seatId": 2,
+                    "seatPos": 2,
+                    "isPremium": false,
+                    "isEmpty": false
+                },
+                {
+                    "id": 3,
+                    "seatId": 3,
+                    "seatPos": 3,
+                    "isPremium": false,
+                    "isEmpty": false
+                },
+                {
+                    "id": 4,
+                    "seatId": 4,
+                    "seatPos": 4,
+                    "isPremium": false,
+                    "isEmpty": false
+                }
+
             ]
         }
     ]
