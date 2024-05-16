@@ -4,43 +4,39 @@ import {Instance, Instances, useGLTF} from '@react-three/drei';
 import seatData from 'data/seat-data.json';
 
 import scene from 'assets/models/cinema_seat.glb'
-import placeholder from 'assets/images/placeholder.png'
 import * as THREE from 'three';
-import { UUID } from 'crypto';
+
+interface SeatsRowData {
+    name: string;
+    elevation: number;
+    seats: {
+        id: number;
+        seatId: number;
+        seatPos: number;
+        isPremium: boolean;
+        isEmpty: boolean;
+    }[];
+}
 
 const Seat = (props: any) => {
-    const gltf = useGLTF(scene);
     const seatRef = useRef(null);
     
 
     const turnSeatRed = () => {
         if (!seatRef.current) return;
 
-        const seatGroup = seatRef.current as THREE.Group;
-
-        seatGroup.traverse((child)=> {
-            if ( child.name === 'seat' ) {
-                const seat = child as THREE.Mesh;
-                const material = seat.material as THREE.MeshBasicMaterial;
-                console.log(seat)
-                material.color = new THREE.Color(0xFF0000);
-            }
-        })
+        // r3f PositionMesh is not defined, so using lambert material
+        const seat = seatRef.current as THREE.MeshLambertMaterial;
+        seat.color = new THREE.Color(0xFF0000);
     }
 
     const turnSeatYellow = () => {
         if (!seatRef.current) return;
 
-        const seatGroup = seatRef.current as THREE.Group;
+        // r3f PositionMesh is not defined, so using lambert material
+        const seat = seatRef.current as THREE.MeshLambertMaterial;
+        seat.color = new THREE.Color(0xFFFF00);
 
-        seatGroup.traverse((child)=> {
-            if ( child.name === 'seat' ) {
-                const seat = child as THREE.Mesh;
-                const material = seat.material as THREE.MeshBasicMaterial;
-                console.log(seat)
-                material.color = new THREE.Color(0xFFFF00);
-            }
-        })
     }
 
     return (
@@ -50,20 +46,19 @@ const Seat = (props: any) => {
                  position={[0, 0, props.seatPos* 3]}
                  onPointerEnter={turnSeatYellow}
                  onPointerLeave={turnSeatRed}
-                 >
-                    <primitive ref={seatRef} object={gltf.scene} /> 
-                </Instance>
+                 ref={seatRef}
+                 />
     )
 }
 
-const SeatsRow = ({elevation}: {elevation: number, key: number}) => {
+const SeatsRow = ({data}: {data: SeatsRowData, key: number}) => {
     const {nodes, materials} = useGLTF(scene);
 
     const seat = nodes.seat as THREE.Mesh;
 
     return (
-        <Instances position-x={-elevation*4} position-y={elevation*3} range={1000} material={materials.Material} geometry={seat.geometry}>
-            {seatData.seatRows[0].seats.map((props, i) => (
+        <Instances position-x={-data.elevation*4} position-y={data.elevation*3} range={1000} material={materials.Material} geometry={seat.geometry}>
+            {data.seats.map((props, i) => (
                 <Seat key={i} {...props} />
             ))}
         </Instances>
@@ -83,7 +78,7 @@ const Cinema = () => {
         <group position-z={-10}>
             {
                 seatData.seatRows.map((props, i) => (
-                    <SeatsRow elevation={props.elevation} key={i} />
+                    <SeatsRow data={props} key={i} />
                 ))
             }
             
