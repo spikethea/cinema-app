@@ -8,6 +8,7 @@ import PerspectiveView from 'components/PerspectiveView/PerspectiveView';
 
 import filmSlice from 'features/films/filmSlice'
 import { IRootState } from 'store';
+import { useGetAllRecentMoviesQuery } from 'services/movies';
 
 const KEY_ID = '73cadb65ff374fcf789e84b35293b73b';
 
@@ -23,18 +24,9 @@ function getMovies(): Promise<MovieData[]> {
 
 function App() {
 
-  const title: String = "MyCinema App";
+  const { data, error, isLoading } = useGetAllRecentMoviesQuery();
 
-  const [film, setFilm] = useState<MovieData>();
 
-  useEffect(()=> {
-    getMovies()
-      .then(movies => {
-        console.log(movies);
-        setFilm(movies[0]);
-      });
-    
-  }, []);
 
   return (
     <div className="film-preview_page">
@@ -43,7 +35,7 @@ function App() {
           <h3>Filter</h3>
         </aside>
         <div className='film-preview_hero-container'>
-          {film ? <Hero film={film}/> : null}
+          {data && data.results ? <Hero film={data.results[0]}/> : null}
           <div className="film-preview_showtimes">
             <button>7:00PM</button>
             <button>7:00PM</button>

@@ -27,4 +27,4 @@ export const movieApi = createApi({
     })
 })
 
-export const { useGetAllRecentMoviesQuery } = movieApi;
+export const { useGetAllRecentMoviesQuery, useGetPosterByNameQuery } = movieApi;

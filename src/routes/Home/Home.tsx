@@ -12,23 +12,15 @@ function App() {
 
   const { data, error, isLoading } = useGetAllRecentMoviesQuery();
 
-  const [filmList, setFilmList] = useState<MovieData[]>([]);
-
-  useEffect(()=> {
-    console.log(data);
-    if (data?.results) 
-      setFilmList(data.results)
-  }, [data]);
-
   return (
     <div className="landing-page">
-      <Hero film={filmList[0]}/>
+      {data ? <Hero film={data?.results[0]}/>: null}
       <main>
         <aside>
           <h3>Filter</h3>
         </aside>
         <section className='movies-container'>
-          {filmList ? filmList.map( (props, id) => {
+          {data && data.results ? data.results.map( (props, id) => {
             return (
             <MovieThumbnail key={id} {...props}/>)
           }): null}
