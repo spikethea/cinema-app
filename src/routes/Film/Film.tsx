@@ -5,10 +5,7 @@ import './Film.scss';
 import Hero from 'components/Hero/Hero';
 import MovieThumbnail from 'components/MovieThumbnail/MovieThumbnail';
 import PerspectiveView from 'components/PerspectiveView/PerspectiveView';
-
-import filmSlice from 'features/films/filmSlice'
-import { IRootState } from 'store';
-import { useGetAllRecentMoviesQuery } from 'services/movies';
+import { useGetAllRecentMoviesQuery, useGetPosterByNameQuery, useGetVideoByNameQuery } from 'services/movies';
 
 const KEY_ID = '73cadb65ff374fcf789e84b35293b73b';
 
@@ -25,9 +22,6 @@ function getMovies(): Promise<MovieData[]> {
 function App() {
 
   const { data, error, isLoading } = useGetAllRecentMoviesQuery();
-
-
-
   return (
     <div className="film-preview_page">
       <main>
@@ -44,7 +38,7 @@ function App() {
           </div>
         </div>
         <div className='film-preview_perspective'>
-          <PerspectiveView/>
+          <PerspectiveView movieId={data?.results[0].id}/>
         </div>
         <section className='movies-container'>
           <h3></h3>

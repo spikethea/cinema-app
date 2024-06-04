@@ -29,7 +29,7 @@ function MovieThumbnail ( data: MovieData ) {
     }, [])
 
     return (
-        <Link to={'preview'} className={'movie-thumbnail'} id={'movie-thumbnail_' + data.id} key={data.id} >
+        <Link to={`preview/${data.id}`} className={'movie-thumbnail'} id={'movie-thumbnail_' + data.id} key={data.id} >
             <img src={TMDBURL + data.poster_path}/>
             <h5>{data.title}</h5>
             <h4>{data.release_date}</h4>

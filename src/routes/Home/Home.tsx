@@ -10,7 +10,7 @@ function App() {
 
   const title: String = "MyCinema App";
 
-  const { data, error, isLoading } = useGetAllRecentMoviesQuery();
+  const { data } = useGetAllRecentMoviesQuery();
 
   return (
     <div className="landing-page">

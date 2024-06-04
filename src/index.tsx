@@ -10,6 +10,7 @@ import reportWebVitals from './reportWebVitals';
 import Film from 'routes/Film/Film';
 import { Provider } from 'react-redux';
 import Home from 'routes/Home/Home';
+import { useGetVideoByNameQuery } from 'services/movies';
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,10 @@ const router = createBrowserRouter([
   element: <Home/>
   },
   {
-    path:"/preview",
+    path:"/preview/:movieId",
+    // loader: async ({ request, params }) => {
+    //   return useGetVideoByNameQuery(Number(params.movieId))
+    // },
     element: <Film/>
   },
 ])

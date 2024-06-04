@@ -13,3 +13,7 @@ interface TmdbData {
     total_pages: number,
     total_results: number
 }
+
+export interface MovieSceneProps {
+    movieId?: number
+}

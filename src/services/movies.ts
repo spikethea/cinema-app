@@ -23,8 +23,11 @@ export const movieApi = createApi({
         }),
         getPosterByName: builder.query<MovieData, string>({
             query: (name) => `3/movie/${name}/images`,
+        }),
+        getVideoByName: builder.query<string, number>({
+            query: (movie_id) => `/3/movie/${movie_id}/videos?language=en-US`,
         })
     })
 })
 
-export const { useGetAllRecentMoviesQuery, useGetPosterByNameQuery } = movieApi;
+export const { useGetAllRecentMoviesQuery, useGetPosterByNameQuery, useGetVideoByNameQuery } = movieApi;

@@ -1,27 +1,30 @@
 import React, { Suspense, useEffect } from 'react';
 import { Canvas, useLoader, useThree } from '@react-three/fiber';
 import {OrbitControls} from '@react-three/drei';
-import scene from 'assets/models/movietheatre.glb'
+import { Perf } from 'r3f-perf';
 import placeholder from 'assets/images/placeholder.png'
-import SeatsRow from './Cinema';
+import Cinema from './Cinema';
 
-function Scene(props: any) {
+import { MovieSceneProps } from 'types';
+
+function Scene(props: MovieSceneProps) {
 
 
     return (
             <Canvas>
+                <Perf />
                 <ambientLight intensity={Math.PI / 2} />
                 <pointLight position={[10, -10, -10]} decay={0} intensity={Math.PI} />
-                <SeatsRow/>
+                <Cinema {...props}/>
                 <OrbitControls enablePan={false} enableZoom={false}/>
             </Canvas>
     )
 }
 
-export default function SuspendedScene() {
+export default function SuspendedScene(props: MovieSceneProps) {
     return (
         <Suspense fallback={placeholder}>
-            <Scene />
+            <Scene {...props} />
         </Suspense>
     )
 }

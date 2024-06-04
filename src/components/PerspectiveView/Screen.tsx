@@ -3,13 +3,21 @@ import { useEffect, useState } from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { useLoader } from "@react-three/fiber";
 import * as THREE from 'three';
+import { useGetAllRecentMoviesQuery, useGetVideoByNameQuery } from "services/movies";
+import videoLink from 'assets/models/screen.glb';
+import { useParams } from "react-router-dom";
 
 interface screenProps {
-    videoLink: string
+    videoId: number
 }
 
 export default function Screen(props: screenProps) {
-    const { nodes }: {nodes: {Screen: THREE.Mesh}} = useLoader(GLTFLoader, 'assets/screen.glb');
+    const { nodes }: {nodes: {Screen: THREE.Mesh}} = useLoader(GLTFLoader, videoLink);
+    console.log(props.videoId);
+    let { movieId } = useParams();
+    const { data } = useGetVideoByNameQuery(Number(movieId));
+  
+    console.log(data)
 
     useEffect(() => {
 
@@ -24,7 +32,7 @@ export default function Screen(props: screenProps) {
 
     const [video] = useState(() => {
         const vid = document.createElement("video");
-        vid.src = props.videoLink;
+        vid.src = 'data';
         vid.crossOrigin = "Anonymous";
         vid.playsInline = true;
         vid.loop = true;
