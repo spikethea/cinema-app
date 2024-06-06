@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { MovieData, TmdbData } from 'types';
+import { MovieData, MovieTrailerData, TmdbData } from 'types';
 
 const TMDBURL = "https://api.themoviedb.org";
 const KEY_ID = '73cadb65ff374fcf789e84b35293b73b';
@@ -24,8 +24,8 @@ export const movieApi = createApi({
         getPosterByName: builder.query<MovieData, string>({
             query: (name) => `3/movie/${name}/images`,
         }),
-        getVideoByName: builder.query<string, number>({
-            query: (movie_id) => `/3/movie/${movie_id}/videos?language=en-US`,
+        getVideoByName: builder.query<MovieTrailerData, number>({
+            query: (movie_id) => `/3/movie/${movie_id}/videos?language=en-US&api_key=${KEY_ID}`,
         })
     })
 })

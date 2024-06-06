@@ -17,3 +17,14 @@ interface TmdbData {
 export interface MovieSceneProps {
     movieId?: number
 }
+
+export interface MovieTrailerData {
+    id: number,
+    results: Array<trailerResult>
+}
+
+interface trailerResult {
+    name: string
+    id: string,
+    key: string
+}
