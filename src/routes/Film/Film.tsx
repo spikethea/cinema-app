@@ -30,12 +30,21 @@ function App() {
         </aside>
         <div className='film-preview_hero-container'>
           {data && data.results ? <Hero film={data.results[0]}/> : null}
-          <div className="film-preview_showtimes">
-            <button>7:00PM</button>
-            <button>7:00PM</button>
-            <button>8:00PM</button>
-            <button>11:00PM</button>
-          </div>
+          <aside className='film-preview_booking-container'>
+            <div className='film-preview_daytimes'>
+              <button>Today</button>
+              <button>Tommorow</button>
+              <button>11th July</button>
+              <button>12th July</button>
+            </div>
+            <div className="film-preview_showtimes">
+              <button>7:00PM</button>
+              <button>7:00PM</button>
+              <button>8:00PM</button>
+              <button>11:00PM</button>
+            </div>
+          </aside>
+          
         </div>
         <div className='film-preview_perspective'>
           <PerspectiveView movieId={data?.results[0].id}/>

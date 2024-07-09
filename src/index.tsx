@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './App.scss';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -10,6 +10,7 @@ import reportWebVitals from './reportWebVitals';
 import Film from 'routes/Film/Film';
 import { Provider } from 'react-redux';
 import Home from 'routes/Home/Home';
+import Navbar from 'components/Navbar/Navbar';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <Provider store={store}>
   <React.StrictMode>
+    <Navbar/>
     <RouterProvider router={router}/>
   </React.StrictMode>
   </Provider>

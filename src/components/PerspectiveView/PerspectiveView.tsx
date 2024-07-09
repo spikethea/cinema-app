@@ -12,7 +12,7 @@ function Scene(props: MovieSceneProps) {
 
     return (
             <Canvas>
-                <Perf />
+                {/* <Perf /> */}
                 <ambientLight intensity={Math.PI / 2} />
                 <pointLight position={[10, -10, -10]} decay={0} intensity={Math.PI} />
                 <Cinema {...props}/>

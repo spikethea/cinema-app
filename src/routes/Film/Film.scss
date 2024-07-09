@@ -13,6 +13,15 @@
     
   }
 
+  &_booking-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &_daytimes {
+
+  }
+
   &_showtimes {
     display: flex;
     flex-direction: column;
